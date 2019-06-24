@@ -15,12 +15,12 @@ int getTimeOfDay() {
 }
 
 jboolean Java_com_nekolaboratory_Stella_Core_checkSpeedHack(JNIEnv *env, jobject instance) {
-    int start = 0, end = 0, time_data = 0;
+    int start = 0, end = 0, timeDiff = 0;
     start = getTimeOfDay();
     sleep(1);
     end = getTimeOfDay();
-    time_data = end - start;
-    if (time_data > 1100 || time_data < 1000) {
+    timeDiff = end - start;
+    if (timeDiff > 1100 || timeDiff < 990) {
         return true;
     }
     return false;
