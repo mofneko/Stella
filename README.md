@@ -43,10 +43,18 @@ Step2. Detect
 
 ```kotlin
         var stella = Stella()
-        stella.initialize(3000, detectCallback)
+        stella.initialize(
+         3000, // Frequency of detection(ms). Set a value more than 1second.
+         detectCallback)
         button.setOnClickListener {
             stella.start()
         }
+```
+
+NOTE: To improve performance, stop detection when it is not necessary.
+
+```kotlin
+            stella.start()
 ```
 
 ##### C# (Unity)
@@ -76,10 +84,19 @@ and execute Detect.
         using (AndroidJavaObject Stella = new AndroidJavaObject("com.nekolaboratory.Stella.Stella"))
         {
         // Step2. Detect
-        Stella.Call("initialize", 3000, new DetectListener());
+        Stella.Call("initialize",
+         3000, // Frequency of detection(ms). Set a value more than 1second.
+         new DetectListener());
         Stella.Call("start");
         }
     }
+```
+
+To improve performance, stop detection when it is not necessary.
+
+```C# (Unity)
+        // The stop function is an instance method.
+        Stella.Call("stop");
 ```
 
 # Development
